@@ -1,6 +1,8 @@
 \documentclass[aspectratio=169, xcolor=table, 10pt]{beamer}
 \usepackage[no-math]{fontspec}
 \usepackage[compatibility=false]{caption}
+\usepackage{makecell}
+\usepackage{ragged2e}
 \captionsetup{labelformat=empty}
 \setmainfont{MinionPro-Regular.otf}[
   Path = font/,
@@ -101,5 +103,53 @@
     \caption{Главне спектралне класе са одговарајућим температурама, апроксимативним бојама и релативним величинама звезде}
   \end{figure}
 \end{frame}
+
+\begin{frame}{Индекс температуре звезде $B-V$}
+  \begin {itemize}
+    \item $B-V$ индекс одређује се посматрањем сјаја звезде кроз два филтера.
+    \item $B$-индекс одређује се посматрањем сјаја звезде кроз $UB$-филтер осетљив на ултраљубичасту и плаву боју.
+    \item $V$-индекс одређује се посматрањем сјаја звезде кроз $VB$-филтер осетљив на већи део видљивог спектра (плаву, жуту и зелену боју).
+    \item $B-V$ индекс представља разлику ова два индекса. Систем је тако баждарен да звезда Вега има $B-V$ индекс једнак нули.
+    \item Мање вредности индекса одговарају топлијим звездама, веће вредности - хладнијим.
+    \item $B-V$ индекс за Сунце износи 0,656, а за плавичасти Ригел -0,03.
+    \item Из овог индекса може се директно израчунати температура звезде:
+  \end {itemize}
+  \begin{equation*}
+  T=4600\text{K}\cdot\left[\frac{1}{0,92(B-V)+1,7}+\frac{1}{0,92(B-V)+0,62}\right]
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Детаљи спектралне класификације}
+  \begin {itemize}
+    \item Класа звезде, њена температурa и индекс боје су три еквивалентне величине.
+  \end {itemize}
+  \begin{table}
+    \vspace{-1em}
+    \resizebox{\textwidth}{!}{
+      \begin{tabular}{|c|c|c|c|c|>{\RaggedRight}p{4cm}|c|}
+      \hline
+      \rowcolor{red} \textbf{\textcolor{white}{Класа}} & \textbf{\textcolor{white}{Температура (K)}} & \textbf{\textcolor{white}{Боја}} & \textbf{\textcolor{white}{Маса ($M_\odot)$}} & \textbf{\textcolor{white}{\makecell{Водоничне линије \\ спектра}}} & \textbf{\textcolor{white}{\makecell[l]{Друге линије \\ спектра}}} & \textbf{\textcolor{white}{\makecell{Проценат \\ звезда}}} \\
+      \hline
+      \hline
+      \rowcolor{red!10}\textbf{O} & > 33.000 & плава & > 16 & слабе & вишеструко јонизовани атоми & ~0,0003\% \\
+      \hline
+      \rowcolor{red!20}\textbf{B} & 10.000 - 33.000 & плава/бела & 2,1 - 16 & средње & неутрални хелијум & ~0,1\% \\
+      \hline
+      \rowcolor{red!10}\textbf{A} & 7.500 - 10.000 & бела/плава & 1,4 - 2,1 & јаке & јонизовани калцијум, неутрални хелијум & ~0,6\% \\
+      \hline
+      \rowcolor{red!20}\textbf{F} & 6.000 - 7.500 & бела & 1,0 - 1,4 & средње & јонизовани калцијум, метали & ~3\% \\
+      \hline
+      \rowcolor{red!10}\textbf{G} & 5.200 - 6.000 & жута & 0,8 - 1,0 & слабе & јаке линије метала & ~7,5\% \\
+      \hline
+      \rowcolor{red!20}\textbf{К} & 3.700 - 5.200 & жута/оранж & 0,45 - 0,8 & врло слабе & неутрални калцијум, титан-оксид & ~12\% \\
+      \hline
+      \rowcolor{red!10}\textbf{М} & < 3.700 & оранж/црвена & < 0,45 & врло слабе & јаке линије калцијума и титан-оксида, неутрални метали & ~76\% \\
+      \hline
+      \end{tabular}
+    }
+  \end{table}
+\end{frame}
+
+\section{Луминоѕност, привидни и апсолутни сјај звезде}
 
 \end{document}
