@@ -1,3 +1,6 @@
 #!/bin/zsh
-lualatex main.tex && lualatex main.tex && open main.pdf
+rm main.pdf
+mualatex main.tex
+lualatex main.tex
+open main.pdf
 
