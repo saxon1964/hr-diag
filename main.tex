@@ -4,10 +4,6 @@
 \usepackage{makecell}
 \usepackage{ragged2e}
 \usepackage{multicol}
-% Thin border globally
-\setlength{\fboxrule}{0.5pt} % border thickness
-\setlength{\fboxsep}{0.5pt}    % padding inside border
-
 \captionsetup{labelformat=empty}
 \setmainfont{MinionPro-Regular.otf}[
   Path = font/,
@@ -42,23 +38,27 @@
 \usepackage{tikz}
 \usetheme{Madrid}
 \usecolortheme{crane}
-
-\setbeamercolor{table even}{bg=yellow} % Yellow for even rows
-\setbeamercolor{table odd}{bg=yellow}  % Yellow for odd rows
-\setbeamercolor{last row}{bg=orange}   % Orange for the last row
-
 \theoremstyle{definition}
-\newtheorem{defi}{Дефиниција}[section]
-
-\newtheorem{prim}{Пример}[section]
-
-\AtBeginSection[]
+\setlength{\fboxrule}{0.5pt} % border thickness
+\setlength{\fboxsep}{0.5pt}    % padding inside border
+\setbeamertemplate{section page}
 {
+  % Set the background template just for this frame
+  \setbeamertemplate{background}{\color{orange!20}\rule{\paperwidth}{\paperheight}}%
   \begin{frame}
-    \frametitle{Садржај}
-    \tableofcontents[currentsection]
+    \begin{centering}
+      \vfill
+      {\large\bfseries Део \thesection} \\[3ex]
+      {\Large\insertsectionhead}
+      \vfill
+    \end{centering}
   \end{frame}
+  % Reset background to default after this frame
+  \setbeamertemplate{background}{}%
 }
+% Make this frame appear at the beginning of each section
+\AtBeginSection{\sectionpage}
+
 
 \title{Херцшпрунг-Раселов дијаграм}
 \author{Лука Марковић}
@@ -68,6 +68,10 @@
 \begin{document}
 
 \maketitle
+
+\begin{frame}{Садржај}
+  \tableofcontents
+\end{frame}
 
 \section{Класификација звезда према површинској температури}
 
@@ -248,7 +252,7 @@
   \end{itemize}
 \end{frame}
 
-\section{Мерење растојања}
+\section{Мерење звезданих растојања}
 
 \begin{frame}{Зашто је мерење растојања битно}
   \begin{itemize}
@@ -308,10 +312,68 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Зашто су цефеиде тако важне?}
   \begin{itemize}
-    \item
+    \item Постоји линеарна веза између луминозности цефеида (којој одговара апсолутна магнитуда) и периода промене сјаја.
+    \item Период и привидни сјај цефеиде су лако мерљиве величине. Из периода се може израчунати луминозност а на основу ње и апсолутна магнитуда.
+    \item На основу релативне и апсолутне магнитуде лако се може израчунати растојање до звезде.
+    \item Рачуницу компликује чињеница да постоје две фамилије цефида са различитим нагибима линије период-луминозност. Пажљивим посматрањем могуће је утврдити којој фамилији припада посматрана цефеида.
+    \item Многе цефеиде су велике, веома светле звезде, могуће их је идентификовати не само у Млечном путу него и у суседним галаксијама.
+    \item Земаљски телескопи могу да уоче цефеиде све до удаљености од 13 милиона светлосних година. Космички телескоп ”Хабл” успешно је регистровао цефеиде на растојању од 56 милиона светлосних година.
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Бели патуљци и супернове типа Ia}
+  \begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+      \begin{figure}
+        \centering
+        \sbox0{\fbox{\includegraphics[width=0.95\textwidth]{images/beli_patuljak.jpg}}}
+        \vspace{-1em}
+        \usebox0
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      Бинарни систем у коме бели патуљак преузима материју од суседне звезде. Када маса белог патуљка пређе границу од $1.44 M_{\odot}$, могућа је експлозија супернове типа Ia.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Специфичности супернове типа Ia}
+  \begin{itemize}
+    \item Мале и средње звезде завршавају свој живот као бели патуљци.
+    \item Реч је о топлом језгру звезде која је потрошила нуклеарно гориво и одбацила спољне слојеве.
+    \item Бели патуљак има екстремну густину. Претежно је сачињен од угљеника и кисеоника.
+    \item Иако су бели патуљци релативно мали, гравитационо поље у њиховој близини екстремно je јако.
+    \item Ако је бели патуљак део двојног звезданог система, бели патуљак мoже да почне да ”краде” материју од суседне звезде. Када маса белог патуљка пређе границу од $1.44 M_{\odot}$, притисак у средишту постаје толико велики да отпочиње нуклеарна реакција.
+    \item У свега пар секунди бели патуљак ће фузионисати скоро сав угљеник и кисеоник у теже елементе. Притом се генерише енергија упоредива са енергијом читаве галаксије.
+    \item Настаје супернова типа Iа чија ће експлозија потпуно уништити бинарни систем.
+    \item Све супернове типа Iа имају исту апсолутну магнитуду: \textbf{-19.3}. На основу привидног сјаја и апсолутне магнитуде може се израчунати даљина белог патуљка.
+    \item Овом методом могу се мерити растојања од више милијарди светлосних година.
+  \end{itemize}
+\end{frame}
+
+\section{Херцшпрунг-Раселов дијаграм}
+
+\begin{frame}{Најважнији дијаграм савремене астрономије}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \sbox0{\fbox{\includegraphics[height=0.8\textheight]{images/hr.jpg}}}
+        \vspace{-1em}
+        \usebox0
+      \end{figure}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \begin{itemize}
+        \item Херцшпрунг-Раселов (H-R) дијаграм представља, по много чему, најважнији дијаграм у астрономији због улоге коју има у проучавању еволуције звезда.
+        \item Дијаграм су, независно један од другог, креирали Ејнар Херцшпрунг и Хенри Норис Расел почетком XX века.
+        \item Постоји неколико форми овог дијаграма али су у суштини све оне међусобно еквивалентне.
+        \item У својој изворној верзији, H-R дијаграм представља зависност луминозности звезде од њене површинске температуре.
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \end{document}
