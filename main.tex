@@ -59,6 +59,41 @@
 % Make this frame appear at the beginning of each section
 \AtBeginSection{\sectionpage}
 
+\newcommand{\CustomTOC}{
+  % Set background just for this frame
+  \setbeamertemplate{background}{\color{orange!20}\rule{\paperwidth}{\paperheight}}%
+
+  \begin{frame}[plain] % plain removes headers/footers for clean look
+    \frametitle{Садржај}
+
+    % Center content vertically
+    \vfill
+
+    % Remove section numbers
+    \setbeamertemplate{section in toc}[sections without number]
+
+    % Red left-aligned bullets with spacing
+    \setbeamertemplate{section in toc}{
+      \leavevmode\par
+      \vspace{0.5em} % spacing between items
+      \hspace{1em}
+      {\color{red}\textbullet}~\inserttocsection
+    }
+
+    % Font size and style
+    \setbeamerfont{section in toc}{size=\large, series=\bfseries}
+    \setbeamercolor{section in toc}{fg=black}
+
+    % Render TOC
+    \tableofcontents[hideallsubsections]
+
+    \vfill
+  \end{frame}
+
+  % Reset background
+  \setbeamertemplate{background}{}%
+}
+
 
 \title{Херцшпрунг-Раселов дијаграм}
 \author{Лука Марковић}
@@ -69,9 +104,7 @@
 
 \maketitle
 
-\begin{frame}{Садржај}
-  \tableofcontents
-\end{frame}
+\CustomTOC
 
 \section{Класификација звезда према површинској температури}
 
