@@ -41,9 +41,9 @@
 \theoremstyle{definition}
 \setlength{\fboxrule}{0.5pt} % border thickness
 \setlength{\fboxsep}{0.5pt}    % padding inside border
+
 \setbeamertemplate{section page}
 {
-  % Set the background template just for this frame
   \setbeamertemplate{background}{\color{orange!20}\rule{\paperwidth}{\paperheight}}%
   \begin{frame}
     \begin{centering}
@@ -53,47 +53,29 @@
       \vfill
     \end{centering}
   \end{frame}
-  % Reset background to default after this frame
   \setbeamertemplate{background}{}%
 }
-% Make this frame appear at the beginning of each section
 \AtBeginSection{\sectionpage}
 
 \newcommand{\CustomTOC}{
-  % Set background just for this frame
   \setbeamertemplate{background}{\color{orange!20}\rule{\paperwidth}{\paperheight}}%
-
   \begin{frame}[plain] % plain removes headers/footers for clean look
     \frametitle{Садржај}
-
-    % Center content vertically
     \vfill
-
-    % Remove section numbers
     \setbeamertemplate{section in toc}[sections without number]
-
-    % Red left-aligned bullets with spacing
     \setbeamertemplate{section in toc}{
       \leavevmode\par
       \vspace{0.5em} % spacing between items
       \hspace{1em}
       {\color{red}\textbullet}~\inserttocsection
     }
-
-    % Font size and style
     \setbeamerfont{section in toc}{size=\large, series=\bfseries}
     \setbeamercolor{section in toc}{fg=black}
-
-    % Render TOC
     \tableofcontents[hideallsubsections]
-
     \vfill
   \end{frame}
-
-  % Reset background
   \setbeamertemplate{background}{}%
 }
-
 
 \title{Херцшпрунг-Раселов дијаграм}
 \author{Лука Марковић}
@@ -404,9 +386,67 @@
         \item Дијаграм су, независно један од другог, креирали Ејнар Херцшпрунг и Хенри Норис Расел почетком XX века.
         \item Постоји неколико форми овог дијаграма али су у суштини све оне међусобно еквивалентне.
         \item У својој изворној верзији, H-R дијаграм представља зависност луминозности звезде од њене површинске температуре.
+        \item Дијаграм лево илуструје положај различитих типова звезда на H-R дијаграму.
       \end{itemize}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Еквивалентни облици H-R дијаграма}
+  \begin{itemize}
+    \item На претходним слајдовима утврдили смо да постоји корелација између класе звезде, индекса B-V и површинске температуре звезде.
+    \item Свака од ове три величине може да представља апсцису H-R дијаграма.
+    \item Takoђе смо утврдили да постоји директна веза између луминозности и апсолутне магнитуде звезде.
+    \item Било која од ове две величине може да предствља ординату H-R дијаграма.
+    \item Површинске температуре крећу се између 3.000 и 50.000 келвина. Иако распон температура обухвата само два реда величине, за апсцису се најчешће се користи логаритамска скала.
+    \item Разлика у луминозности звезда много је већа (најмање десет редова величине) тако да је ордината увек логаритамска.
+    \item Из чисто историјских разлога, апсциса је ”обрунта”: пoвршинска температура звезде опада дуж апсцисе.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Како је настао H-R дијаграм?}
+  \begin{columns}[T]
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \centering
+        \sbox0{\fbox{\includegraphics[height=0.8\textheight]{images/hr-2.jpg}}}
+        \vspace{-1em}
+        \usebox0
+      \end{figure}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+        \item Звезде током времена мењају своју температуру и луминозност, самим тим и положај на H-R дијаграму.
+        \item Због спорости промена, дијаграм није настао праћењем појединачних звезда током времена већ уцртавањем звезда мерењем њиховог тренутног стања.
+        \item Дијаграм је касније допуњен подацима из два велика звездана каталога: ”Hiparcos” и ”Gliese”.
+        \item Тако је настао дијаграм на левој страни који садржи податке за око 20.000 звезда.
+        \item Дијаграм приказује звезде у разним фазама њихове еволуције.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Елементи H-R дијаграма}
+  \begin{itemize}
+    \item Најуочљивији део дијаграма, тзв. ”Главни низ” простире се дијагонално, од горњег левог до доњег десног угла.
+    \item Бројност звезда драстично расте како се спуштамо низ главни низ, од екстремно топлих и великих звезда до релативно хладних и тамних.
+    \item Када млада звезда започне да фузионише водоник у хелијум, она заузме почетно место негде у главном низу. У том низу, звезда проведе око 90\% свог живота.
+    \item Када звезда потроши своје водонично гориво, површинска температура опада али запремина драстично расте: звезда прелази у горњи део дијаграма у коме се налазе плаве и црвене џиновске звезде у задњим стадијумима живота.
+    \item Звезде мале величине завршавају свој живот као бели патуљци (на дијаграму се налазе испод главног низа), оне веће као супернове иза којих остају неутронске звезде или црне рупе.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Значај H-R дијаграма}
+  \begin{itemize}
+    \item Дијаграм показује да природа не уме да створи звезде произвољне температуре и луминозности. Највећи део дијаграма је празан.
+    \item Утврђено је да за звезде у главном низу постоји директна веза између луминозности $L$ и масе звезде $M$:
+      \begin{equation*}
+        \frac{L}{L_\odot}=\left(\frac{M}{M_\odot}\right)^\alpha,\quad \alpha\approx 3,5
+      \end{equation*}
+    \item Из положаја звезде на дијаграму може се закључити у којој фази свог животног циклуса се звезда налази.
+    \item H-R дијаграм се користи и као универзални ”даљинар”: анализом спектра можемо да утврдимо да се звезда налази у главном низу и да има одређену класу. Из класе се може одредити температура а на основу ње се са H-R дијаграма очита њена луминозност, тј. апсолутна магнитуда. Из привидне и апсолутне магнитуде лако се срачуна растојање до звезде.
+    \item Сличан поступак може се спровести и за звезде изван главног низа али је рачуница компликованија.
+  \end{itemize}
 \end{frame}
 
 \end{document}
