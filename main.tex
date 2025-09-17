@@ -19,6 +19,7 @@
 \usepackage{tikz}
 \usepackage{hyperref}
 \usepackage{qrcode}
+\usetikzlibrary{calc}
 
 % -------------------------------------------------------------------
 % Font family, language settings
@@ -56,6 +57,9 @@
 \usetheme{Madrid}
 \usecolortheme{crane}
 
+% This is that nice orange color used by Madrid/crane template
+\definecolor{craneColor}{HTML}{FFBC00}
+
 % Using plain text in bibliography, 'default' setting shows an ugly book icon
 \setbeamertemplate{bibliography item}[text]
 
@@ -66,13 +70,23 @@
   \begin{frame}
     \begin{centering}
       \vfill
-      {\large\bfseries Део \thesection} \\[3ex]
-      {\Large\insertsectionhead}
+      {\large\bfseries Део \thesection} \\[3em]
+      % Full-width rectangle with centered text
+      \begin{tikzpicture}[remember picture,overlay]
+        % Define rectangle coordinates
+        \coordinate (left)  at (current page.west |- 0,0);
+        \coordinate (right) at (current page.east |- 0,1cm); % rectangle height 1cm
+        % Draw rectangle
+        \fill[craneColor] (left) rectangle (right);
+        % Place text centered inside the rectangle
+        \node[anchor=center] at ($0.5*(left)+0.5*(right)$) {\Large\insertsectionhead};
+      \end{tikzpicture}
       \vfill
     \end{centering}
   \end{frame}
   \setbeamertemplate{background}{}%
 }
+% At the beginning of each section, show the section page
 \AtBeginSection{\sectionpage}
 
 % Custom table of contents template
@@ -106,6 +120,7 @@
 % Frame around images and charts
 \setlength{\fboxrule}{0.5pt} % border thickness
 \setlength{\fboxsep}{0.5pt}    % padding inside border
+
 
 % -------------------------------------------------------------------
 % General data about presentation
@@ -189,7 +204,6 @@
 \end{frame}
 
 \begin{frame}{Детаљи спектралне класификације}
-  \definecolor{headerColor}{HTML}{FFBC00}
   \begin{itemize}
     \item Класа звезде, њена температурa и индекс боје су три еквивалентне величине.
   \end{itemize}
@@ -198,7 +212,7 @@
     \resizebox{\textwidth}{!}{
       \begin{tabular}{|c|c|c|c|c|>{\RaggedRight}p{4cm}|c|}
       \hline
-      \rowcolor{headerColor} \textbf{\textcolor{black}{Класа}} & \textbf{\textcolor{black}{Температура (K)}} & \textbf{\textcolor{black}{Боја}} & \textbf{\textcolor{black}{Маса ($M_\odot)$}} & \textbf{\textcolor{black}{\makecell{Водоничне линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell[l]{Друге линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell{Проценат \\ звезда}}} \\
+      \rowcolor{craneColor} \textbf{\textcolor{black}{Класа}} & \textbf{\textcolor{black}{Температура (K)}} & \textbf{\textcolor{black}{Боја}} & \textbf{\textcolor{black}{Маса ($M_\odot)$}} & \textbf{\textcolor{black}{\makecell{Водоничне линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell[l]{Друге линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell{Проценат \\ звезда}}} \\
       \hline
       \hline
       \rowcolor{orange!15}\textbf{O} & > 33.000 & плава & > 16 & слабе & вишеструко јонизовани атоми & ~0,0003\% \\
