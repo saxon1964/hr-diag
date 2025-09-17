@@ -1,10 +1,28 @@
 \documentclass[aspectratio=169, xcolor=table, 10pt]{beamer}
+
+% -------------------------------------------------------------------
+% Packages used in this document
+% -------------------------------------------------------------------
 \usepackage[no-math]{fontspec}
 \usepackage[compatibility=false]{caption}
 \usepackage{makecell}
 \usepackage{ragged2e}
 \usepackage{multicol}
-\captionsetup{labelformat=empty}
+\usepackage[utf8]{inputenc}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{qrcode}
+
+% -------------------------------------------------------------------
+% Font family, language settings
+% -------------------------------------------------------------------
 \setmainfont{MinionPro-Regular.otf}[
   Path = font/,
   BoldFont = MinionPro-Bold.otf,
@@ -24,28 +42,24 @@
   BoldItalicFont = MinionPro-BoldIt.otf,
   Script = Cyrillic
 ]
-\usepackage[utf8]{inputenc}
-\usepackage{polyglossia}
 \setmainlanguage{serbian}
 \setotherlanguage{english}
+% Increase default spacing between lines for 10%
 \renewcommand{\baselinestretch}{1.1}
-\usepackage{amsmath}
-\usepackage{hyperref}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{hyperref}
-\usepackage{qrcode}
+% Beamer template uses mono-font for URLs.
+% Let's use the font that is already available
 \renewcommand{\UrlFont}{\sffamily}
-\setbeamertemplate{bibliography item}[text]
+
+% -------------------------------------------------------------------
+% Beamer settings: yellow theme
+% -------------------------------------------------------------------
 \usetheme{Madrid}
 \usecolortheme{crane}
-\theoremstyle{definition}
-\setlength{\fboxrule}{0.5pt} % border thickness
-\setlength{\fboxsep}{0.5pt}    % padding inside border
 
+% Using plain text in bibliography, 'default' setting shows an ugly book icon
+\setbeamertemplate{bibliography item}[text]
+
+% Custom section page
 \setbeamertemplate{section page}
 {
   \setbeamertemplate{background}{\color{orange!20}\rule{\paperwidth}{\paperheight}}%
@@ -61,6 +75,8 @@
 }
 \AtBeginSection{\sectionpage}
 
+% Custom table of contents template
+% Just type \CustomTOC to generate TOC where appropriate
 \newcommand{\CustomTOC}{
   \setbeamertemplate{background}{\color{orange!20}\rule{\paperwidth}{\paperheight}}%
   \begin{frame}[plain] % plain removes headers/footers for clean look
@@ -81,20 +97,38 @@
   \setbeamertemplate{background}{}%
 }
 
+% -------------------------------------------------------------------
+% Other settings
+% -------------------------------------------------------------------
+% URL that will be used for QR code generation
 \newcommand{\MyQRurl}{https://github.com/saxon1964/hr-diag/tree/master/mathematica}
 
+% Frame around images and charts
+\setlength{\fboxrule}{0.5pt} % border thickness
+\setlength{\fboxsep}{0.5pt}    % padding inside border
+
+% -------------------------------------------------------------------
+% General data about presentation
+% -------------------------------------------------------------------
 \title{Херцшпрунг-Раселов дијаграм}
 \author{Лука Марковић}
 \institute[МАТФ]{Математички факултет Универзитета у Београду}
 \date{Септембар 2025.}
 
+% -------------------------------------------------------------------
+% Document begins here
+% -------------------------------------------------------------------
 \begin{document}
 
+% Create title slide
 \maketitle
 
+% Create TOC using custom template
 \CustomTOC
 
+% ------------------------------------------------------------------
 \section{Класификација звезда према површинској температури}
+% ------------------------------------------------------------------
 
 \begin{frame}{Какве све звезде постоје?}
   \begin{itemize}
@@ -125,10 +159,15 @@
 \end{frame}
 
 \begin{frame}{Графички приказ звезданих класа}
+  % In general, images can be displayed in a much simpler way.
+  % The solution used here provides a caption that will not exceed the boundaries of the image
   \begin{figure}
     \centering
+    % Frame image, then put it in the box
     \sbox0{\fbox{\includegraphics[height=0.65\textheight]{images/klase_zvezda.jpg}}}
+    % Show the box!
     \usebox0
+    % Set the caption width to the width of the box
     \captionsetup{width=\wd0}
     \caption{Главне спектралне класе са одговарајућим температурама, апроксимативним бојама и релативним величинама звезде}
   \end{figure}
@@ -145,11 +184,12 @@
     \item Из овог индекса може се директно израчунати температура површине звезде:
   \end{itemize}
   \begin{equation*}
-  T=4600\text{K}\cdot\left[\frac{1}{0,92(B-V)+1,7}+\frac{1}{0,92(B-V)+0,62}\right]
+    T=4600\text{K}\cdot\left[\frac{1}{0,92(B-V)+1,7}+\frac{1}{0,92(B-V)+0,62}\right]
   \end{equation*}
 \end{frame}
 
 \begin{frame}{Детаљи спектралне класификације}
+  \definecolor{headerColor}{HTML}{FFBC00}
   \begin{itemize}
     \item Класа звезде, њена температурa и индекс боје су три еквивалентне величине.
   \end{itemize}
@@ -158,29 +198,31 @@
     \resizebox{\textwidth}{!}{
       \begin{tabular}{|c|c|c|c|c|>{\RaggedRight}p{4cm}|c|}
       \hline
-      \rowcolor{red} \textbf{\textcolor{white}{Класа}} & \textbf{\textcolor{white}{Температура (K)}} & \textbf{\textcolor{white}{Боја}} & \textbf{\textcolor{white}{Маса ($M_\odot)$}} & \textbf{\textcolor{white}{\makecell{Водоничне линије \\ спектра}}} & \textbf{\textcolor{white}{\makecell[l]{Друге линије \\ спектра}}} & \textbf{\textcolor{white}{\makecell{Проценат \\ звезда}}} \\
+      \rowcolor{headerColor} \textbf{\textcolor{black}{Класа}} & \textbf{\textcolor{black}{Температура (K)}} & \textbf{\textcolor{black}{Боја}} & \textbf{\textcolor{black}{Маса ($M_\odot)$}} & \textbf{\textcolor{black}{\makecell{Водоничне линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell[l]{Друге линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell{Проценат \\ звезда}}} \\
       \hline
       \hline
-      \rowcolor{red!10}\textbf{O} & > 33.000 & плава & > 16 & слабе & вишеструко јонизовани атоми & ~0,0003\% \\
+      \rowcolor{orange!15}\textbf{O} & > 33.000 & плава & > 16 & слабе & вишеструко јонизовани атоми & ~0,0003\% \\
       \hline
-      \rowcolor{red!20}\textbf{B} & 10.000 - 33.000 & плава/бела & 2,1 - 16 & средње & неутрални хелијум & ~0,1\% \\
+      \rowcolor{orange!25}\textbf{B} & 10.000 - 33.000 & плава/бела & 2,1 - 16 & средње & неутрални хелијум & ~0,1\% \\
       \hline
-      \rowcolor{red!10}\textbf{A} & 7.500 - 10.000 & бела/плава & 1,4 - 2,1 & јаке & јонизовани калцијум, неутрални хелијум & ~0,6\% \\
+      \rowcolor{orange!15}\textbf{A} & 7.500 - 10.000 & бела/плава & 1,4 - 2,1 & јаке & јонизовани калцијум, неутрални хелијум & ~0,6\% \\
       \hline
-      \rowcolor{red!20}\textbf{F} & 6.000 - 7.500 & бела & 1,0 - 1,4 & средње & јонизовани калцијум, метали & ~3\% \\
+      \rowcolor{orange!25}\textbf{F} & 6.000 - 7.500 & бела & 1,0 - 1,4 & средње & јонизовани калцијум, метали & ~3\% \\
       \hline
-      \rowcolor{red!10}\textbf{G} & 5.200 - 6.000 & жута & 0,8 - 1,0 & слабе & јаке линије метала & ~7,5\% \\
+      \rowcolor{orange!15}\textbf{G} & 5.200 - 6.000 & жута & 0,8 - 1,0 & слабе & јаке линије метала & ~7,5\% \\
       \hline
-      \rowcolor{red!20}\textbf{К} & 3.700 - 5.200 & жута/оранж & 0,45 - 0,8 & врло слабе & неутрални калцијум, титан-оксид & ~12\% \\
+      \rowcolor{orange!25}\textbf{К} & 3.700 - 5.200 & жута/оранж & 0,45 - 0,8 & врло слабе & неутрални калцијум, титан-оксид & ~12\% \\
       \hline
-      \rowcolor{red!10}\textbf{М} & < 3.700 & оранж/црвена & < 0,45 & врло слабе & јаке линије калцијума и титан-оксида, неутрални метали & ~76\% \\
+      \rowcolor{orange!15}\textbf{М} & < 3.700 & оранж/црвена & < 0,45 & врло слабе & јаке линије калцијума и титан-оксида, неутрални метали & ~76\% \\
       \hline
       \end{tabular}
     }
   \end{table}
 \end{frame}
 
+% ------------------------------------------------------------------
 \section{Привидни сјај и магнитуда звезде }
+% ------------------------------------------------------------------
 
 \begin{frame}{Привидни сјај}
   \begin{columns}[T]
@@ -190,7 +232,7 @@
         \sbox0{\fbox{\includegraphics[height=0.60\textheight]{images/hiparh.jpg}}}
         \usebox0
         \captionsetup{width=\wd0}
-        \caption{Хипарх, један од највећих античких астронома}
+        \caption{Хипарх, највећи антички астроном}
       \end{figure}
     \end{column}
     \begin{column}{0.65\textwidth}
@@ -246,7 +288,9 @@
   \end{multicols}
 \end{frame}
 
+% ------------------------------------------------------------------
 \section{Апсoлутна магнитуда и луминозност звезде}
+% ------------------------------------------------------------------
 
 \begin{frame}{Апсолутна магнитуда (сјај) звезде}
   \begin{itemize}
@@ -275,7 +319,9 @@
   \end{itemize}
 \end{frame}
 
+% ------------------------------------------------------------------
 \section{Мерење звезданих растојања}
+% ------------------------------------------------------------------
 
 \begin{frame}{Зашто је мерење растојања битно}
   \begin{itemize}
@@ -376,7 +422,9 @@
   \end{itemize}
 \end{frame}
 
+% ------------------------------------------------------------------
 \section{Херцшпрунг-Раселов дијаграм}
+% ------------------------------------------------------------------
 
 \begin{frame}{Најважнији дијаграм савремене астрономије}
   \begin{columns}[T]
@@ -484,7 +532,9 @@
   }
 \end{frame}
 
+% ------------------------------------------------------------------
 \section{Закључак}
+% ------------------------------------------------------------------
 
 \begin{frame}{Значај Херцшпрунг–Раселовог дијаграма}
   \begin{itemize}
@@ -498,6 +548,9 @@
   \end{itemize}
 \end{frame}
 
+% ------------------------------------------------------------------
+% Bibliography
+% ------------------------------------------------------------------
 \begin{frame}{Референце}
     \begin{thebibliography}{9}
 
@@ -525,3 +578,4 @@
 \end{frame}
 
 \end{document}
+
