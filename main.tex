@@ -70,17 +70,25 @@
   \begin{frame}
     \begin{centering}
       \vfill
-      {\large\bfseries Део \thesection} \\[3em]
-      % Full-width rectangle with centered text
-      \begin{tikzpicture}[remember picture,overlay]
-        % Define rectangle coordinates
-        \coordinate (left)  at (current page.west |- 0,0);
-        \coordinate (right) at (current page.east |- 0,1cm); % rectangle height 1cm
-        % Draw rectangle
-        \fill[craneColor] (left) rectangle (right);
-        % Place text centered inside the rectangle
-        \node[anchor=center] at ($0.5*(left)+0.5*(right)$) {\Large\insertsectionhead};
+
+      % First line (above the rectangle)
+      {\large\bfseries Део \thesection} \\[3ex]
+
+      % Second line with background rectangle
+      \begin{tikzpicture}
+        \def\hmargin{0.25cm} % gap from left/right edges
+
+        % Node with background rectangle and text
+        \node[
+          fill=craneColor,
+          rounded corners=2mm,
+          inner xsep=0.5cm,
+          inner ysep=0.3cm,
+          minimum width=\linewidth-2*\hmargin,
+          align=center
+        ] {\Large\insertsectionhead};
       \end{tikzpicture}
+
       \vfill
     \end{centering}
   \end{frame}
@@ -212,7 +220,14 @@
     \resizebox{\textwidth}{!}{
       \begin{tabular}{|c|c|c|c|c|>{\RaggedRight}p{4cm}|c|}
       \hline
-      \rowcolor{craneColor} \textbf{\textcolor{black}{Класа}} & \textbf{\textcolor{black}{Температура (K)}} & \textbf{\textcolor{black}{Боја}} & \textbf{\textcolor{black}{Маса ($M_\odot)$}} & \textbf{\textcolor{black}{\makecell{Водоничне линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell[l]{Друге линије \\ спектра}}} & \textbf{\textcolor{black}{\makecell{Проценат \\ звезда}}} \\
+      \rowcolor{craneColor}
+        \textbf{\textcolor{black}{Класа}} &
+        \textbf{\textcolor{black}{Температура (K)}} &
+        \textbf{\textcolor{black}{Боја}} &
+        \textbf{\textcolor{black}{Маса ($M_\odot)$}} &
+        \textbf{\textcolor{black}{\makecell{Водоничне линије \\ спектра}}} &
+        \textbf{\textcolor{black}{\makecell[l]{Друге линије \\ спектра}}} &
+        \textbf{\textcolor{black}{\makecell{Проценат \\ звезда}}} \\
       \hline
       \hline
       \rowcolor{orange!15}\textbf{O} & > 33.000 & плава & > 16 & слабе & вишеструко јонизовани атоми & ~0,0003\% \\
