@@ -37,6 +37,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{hyperref}
+\usepackage{qrcode}
 \renewcommand{\UrlFont}{\sffamily}
 \setbeamertemplate{bibliography item}[text]
 \usetheme{Madrid}
@@ -79,6 +80,8 @@
   \end{frame}
   \setbeamertemplate{background}{}%
 }
+
+\newcommand{\MyQRurl}{https://github.com/saxon1964/hr-diag/tree/master/mathematica}
 
 \title{Херцшпрунг-Раселов дијаграм}
 \author{Лука Марковић}
@@ -467,12 +470,16 @@
   \vspace{0.5em}
   \includegraphics[width=0.8\textwidth,height=0.80\textheight]{images/hr.png}
 
-  % Overlay: QR code shows up only from slide 2 onward
+  % force QR code to be computed on first overlay only, but hidden (no layout)
+  \only<1>{\phantom{\qrcode{\MyQRurl}}}
+
+  % show QR code from slide 2 onward, bottom-left corner
   \uncover<2->{%
     \begin{tikzpicture}[remember picture,overlay]
-      \node[anchor=south west,xshift=2.8cm,yshift=1.6cm]
+      \node[anchor=south west, xshift=2.5cm, yshift=1.5cm,
+        inner sep=3pt, fill=white, rounded corners=2pt]
         at (current page.south west)
-        {\includegraphics[width=2cm]{images/qr.png}};
+        {\qrcode[height=2cm]{\MyQRurl}};
     \end{tikzpicture}
   }
 \end{frame}
