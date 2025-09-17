@@ -564,9 +564,10 @@
 \begin{frame}{H-R дијаграм нацртан коришћењем програма ”Mathematica”}
   \centering
   \vspace{0.5em}
-  \fbox{\includegraphics[width=0.9\textwidth,height=0.80\textheight]{images/hr.png}}
+  \only<1>{\fbox{\includegraphics[width=0.9\textwidth,height=0.80\textheight]{images/hr-regular.png}}}
+  \only<2->{\fbox{\includegraphics[width=0.9\textwidth,height=0.80\textheight]{images/hr-final.png}}}
   % show QR code from slide 2 onward, bottom-left corner
-  \uncover<2->{%
+  \uncover<3->{%
     \begin{tikzpicture}[remember picture,overlay]
       \node[anchor=south west, xshift=1.9cm, yshift=1.5cm,
         inner sep=3pt, fill=white, rounded corners=2pt]
