@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20959,        481]
-NotebookOptionsPosition[     20495,        466]
-NotebookOutlinePosition[     20912,        482]
-CellTagsIndexPosition[     20869,        479]
+NotebookDataLength[     21149,        483]
+NotebookOptionsPosition[     20685,        468]
+NotebookOutlinePosition[     21102,        484]
+CellTagsIndexPosition[     21059,        481]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,10 +32,9 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     RowBox[{"calculateStarRadius", " ", "=", " ", "True"}], ";", " ", 
-    RowBox[{"(*", " ", "switchable", " ", "*)"}], "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", "switchable", " ", "*)"}], "\[IndentingNewLine]", "\n", 
     RowBox[{"(*", " ", 
-     RowBox[{"Chart", " ", "Parameters"}], " ", "*)"}], "\n", 
+     RowBox[{"Chart", " ", "Parameters"}], " ", "*)"}], "\[IndentingNewLine]", 
     RowBox[{"imageSize", " ", "=", " ", "1400"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -72,11 +71,11 @@ Cell[BoxData[
          RowBox[{"plotRange", "[", 
           RowBox[{"[", 
            RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ")"}]}], " ", "/", " ", 
-      "aspectRatio"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   
+      "aspectRatio"}]}], ";"}], "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{"Stefan", "-", 
-     RowBox[{"Boltzman", " ", "constant"}]}], " ", "*)"}], "\n", 
+     RowBox[{"Boltzman", " ", "constant"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"sbConst", " ", "=", " ", 
      RowBox[{"5.67", " ", 
@@ -237,7 +236,7 @@ Cell[BoxData[
            " ", "&"}], ",", " ", "starSizes"}], "]"}], ",", 
        RowBox[{"Map", "[", 
         RowBox[{
-         RowBox[{"0.003", "&"}], ",", " ", "starSizes"}], "]"}]}], "]"}]}], 
+         RowBox[{"0.004", "&"}], ",", " ", "starSizes"}], "]"}]}], "]"}]}], 
     ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
@@ -460,9 +459,12 @@ bright)\>\"", ",", " ", "14"}], "]"}]}], "\n", "     ", "}"}]}], ",", "\n",
    3.967212140698477*^9, 3.9672123030640078`*^9}, {3.967212356290275*^9, 
    3.967212363006222*^9}, {3.967212399389065*^9, 3.967212426408642*^9}, {
    3.967212460057122*^9, 3.967212481690749*^9}, {3.9672125197860203`*^9, 
-   3.967212520654914*^9}, {3.9672126487999763`*^9, 3.967212649321018*^9}},
+   3.967212520654914*^9}, {3.9672126487999763`*^9, 3.967212649321018*^9}, {
+   3.96721290151653*^9, 3.96721290213428*^9}, {3.967212961521278*^9, 
+   3.967212961694996*^9}, {3.96721300413722*^9, 3.967213005226337*^9}, {
+   3.9672130621773443`*^9, 3.967213062742382*^9}},
  CellLabel->
-  "In[452]:=",ExpressionUUID->"63e9ee97-2d79-4f26-8766-7f7e145d42e5"]
+  "In[536]:=",ExpressionUUID->"63e9ee97-2d79-4f26-8766-7f7e145d42e5"]
 },
 WindowSize->{1281, 906},
 WindowMargins->{{26, Automatic}, {Automatic, 11}},
@@ -482,7 +484,7 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 154, 3, 32, "Input",ExpressionUUID->"dd58168b-a40a-45e6-a91f-a22089b4616c"],
-Cell[715, 25, 19776, 439, 1718, "Input",ExpressionUUID->"63e9ee97-2d79-4f26-8766-7f7e145d42e5"]
+Cell[715, 25, 19966, 441, 1718, "Input",ExpressionUUID->"63e9ee97-2d79-4f26-8766-7f7e145d42e5"]
 }
 ]
 *)
